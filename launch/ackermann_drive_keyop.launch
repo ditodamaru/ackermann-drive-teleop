@@ -1,0 +1,11 @@
+<launch>
+  <!-- test -->
+  <arg name="max_speed" default="0.58"/>
+  <arg name="max_angle" default="0.43"/>
+  <!-- Launch joy_node that publishes Joy messages -->
+  <node name="keyop" type="keyop_node" pkg="keyop"/>
+
+  <!-- Launch ackermann_drive_joyop to teleoperate robots with ackermann steering -->
+  <node name="ackermann_drive_joyop" type="keyop.py" pkg="ackermann_drive_teleop" output='screen' args="$(arg max_speed) $(arg max_angle)"/>
+</launch>
+
