@@ -1,3 +1,7 @@
+# Improvement
+- [x] add safety features
+- [x] refine the script, the terminal output not good
+
 # ackermann_drive_teleop
 ROS teleoperation scripts for robots with ackermann steering
 
@@ -21,3 +25,23 @@ eg.3 `rosrun ackermann_drive_teleop keyop.py 0.5 0.8 ack_cmd`
 eg. `roslaunch ackermann_drive_teleop ackermann_drive_joyop.launch max_speed:=0.5 max_angle:=0.8`  
 + **In order to use a joystick, it must have read and write permissions.**  
 You can grant such permissions by executing the following command: `sudo chmod a+rw /dev/input/js0`
+
+### Usage for HADA Robotic Platform
+
+This is an example of how to operate HADA robot platform using joystick teleoperation
+* Bringup the robot
+  ```sh
+    sudo ip link set can0 up type can bitrate 125000
+  ```
+* Terminal 2 : Launch Joystick Remapper (For MX Swicth Nintendo Joystick)
+  ```sh
+  roslaunch joystick_remapper joystick_remapper_ps3_hadarobot.launch
+  ```
+* Terminal 3 : Launch ackerman drive joystick teleoperation
+  ```sh
+  rosrun ackerman_drive_teleop joyup.py
+  ```
+* Terminal 4: Launch Cansend Generator
+  ```sh
+  rosrun cansend_generator cansend_generator.py
+  ```
