@@ -142,3 +142,12 @@ class AckermannDriveKeyop:
 if __name__ == '__main__':
     rospy.init_node('ackermann_drive_keyop_node')
     keyop = AckermannDriveKeyop(sys.argv[1:len(sys.argv)])
+
+
+def send_cansend_frame(cansend_frame):
+    try:
+        subprocess.check_call(['cansend', 'can0', cansend_frame])
+    except subprocess.CalledProcessError as e:
+        rospy.logerr("Error sending cansend frame. Return code: %s", e.returncode)
+    except Exception as e:
+        rospy.logerr("Error sending cansend frame: %s", str(e))

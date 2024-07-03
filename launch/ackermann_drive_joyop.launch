@@ -5,6 +5,6 @@
   <node name="joy" type="joy_node" pkg="joy"/>
 
   <!-- Launch ackermann_drive_joyop to teleoperate robots with ackermann steering -->
-  <node name="ackermann_drive_joyop" type="ackermann_drive_joyop.py" pkg="ackermann_drive_teleop" output='screen' args="$(arg max_speed) $(arg max_angle)"/>
+  <node name="ackermann_drive_joyop" type="joyop.py" pkg="ackermann_drive_teleop" output='screen' args="$(arg max_speed) $(arg max_angle)"/>
 </launch>
 
